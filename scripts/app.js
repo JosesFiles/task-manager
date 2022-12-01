@@ -47,9 +47,25 @@ function saveTask(){
     //create a new instance of Task (object)
     let task = new Task(isImportant, title, description, dueDate, category, priority, cost);
     console.log(task);
+    displayTask(task);
+
     //console log the instance (object)
 }
+function displayTask(task){
+    let syntax = `<div>
+        <div>
+            <h5>${task.title}</h5>
+            <p>${task.description}</p>
+        </div>
 
+        <label>${task.dueDate}</label>
+        <label>${task.category}</label>
+        <label>${task.cost}</label>
+            
+    </div>`; // html code
+
+    $("#pendingTask").append(syntax);
+}
 
 function init() {
     console.log("Task Manager");

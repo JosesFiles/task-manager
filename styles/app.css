@@ -11,19 +11,24 @@ h1 {
     margin: 0.8rem 0;
 }
 
+h3 {
+    color: red;
+    text-align: center;
+}
+
 .main-container {
     display: flex;
     height: calc(100vh - 70px);
+    background-image: url(".image/sunrise.jpg");
+    background-size: cover;
 }
 
 #secList {
     flex: 2;
-    background-color: coral;
 }
 
 #secForm {
     flex: 1;
-    background-color: darksalmon;
 }
 
 #footer {
@@ -42,4 +47,18 @@ h1 {
 
 #btndetails {
     text-align: right;
+}
+
+.task {
+    border: 1px solid white;
+    margin-bottom: 10px;
+    padding: 12px 20px;
+}
+
+.task .description {
+    flex: 4;
+}
+
+.task label {
+    flex: 1;
 }
