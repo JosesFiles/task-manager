@@ -52,8 +52,8 @@ function saveTask(){
     //console log the instance (object)
 }
 function displayTask(task){
-    let syntax = `<div>
-        <div>
+    let syntax = `<div class="task">
+        <div class="description">
             <h5>${task.title}</h5>
             <p>${task.description}</p>
         </div>
