@@ -11,5 +11,6 @@ class Task {
         this.priority = priority;
         this.cost = cost;
 
+        this.name = "Jose Luis";
     }
 }

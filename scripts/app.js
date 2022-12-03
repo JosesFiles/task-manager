@@ -47,10 +47,29 @@ function saveTask(){
     //create a new instance of Task (object)
     let task = new Task(isImportant, title, description, dueDate, category, priority, cost);
     console.log(task);
-    displayTask(task);
+    
 
     //console log the instance (object)
+    // create a post request to:
+    // https://fsdiapi.azurewebsites.net/api/tasks/
+
+$.ajax({
+    type: "POST",
+    url: "https://fsdiapi.azurewebsites.net/api/tasks/",
+    data: JSON.stringify(task),
+    contentType: "application/json",
+    success: function (data) {
+        displayTask(task);
+        console.log("Server says", data);
+    },
+    error: function (err) {
+        console.log("saving failed", err);
+        alert("error, task not saved");
+        },
+    });
 }
+
+
 function displayTask(task){
     let syntax = `<div class="task">
         <div class="description">
@@ -67,8 +86,44 @@ function displayTask(task){
     $("#pendingTask").append(syntax);
 }
 
+function testRequest() {
+    $.ajax({
+        type: "GET",
+        url:"https://fsdiapi.azurewebsites.net",
+        success: function(data) {
+            console.log("Server says", data);
+        },
+        error: function(error) {
+            console.log("Request error", error);
+        }
+    });
+}
+
+function fetchTasks(){
+    $.ajax({
+        type: "Get",
+        url: "https://fsdiapi.azurewebsites.net/api/tasks",
+        success: function(data) {
+            let all = JSON.parse(data); // will parse the json string into js obj / array 
+            console.log(all);  // all = all the tasks saved on the server
+
+            for(let i=0; i<all.length; i++) {
+                let task = all[i];
+                if (task.name === "Jose Luis"){
+                displayTask(task);
+            }
+        }
+    },
+    error: function(error) {
+        console.log("request error", error);
+        },
+    });
+}
+
 function init() {
     console.log("Task Manager");
+
+fetchTasks();
 
     $("#planeIcon").click(toggleImportant);
     $("#btnSave").click(saveTask);
@@ -93,4 +148,9 @@ window.onload = init;
  * catch the click event on the icon, (on init fn)
  * when the icon is clicked, call a fn name toggleImportant
  * in toggleImportantconsole log any message
+ * 
+ * get -  retrieve
+ * post - create new
+ * put and patch - modify
+ * delete - remove
  */

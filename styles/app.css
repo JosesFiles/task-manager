@@ -31,7 +31,7 @@ h4 {
 
 .main-container {
     display: flex;
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 70px);
     background-image: url("https://th.bing.com/th/id/R.4e2f00fb62a628c0b985b123ef20e9ff?rik=uWXEX7Y5gG8E0w&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f6%2ff%2f2%2f672427.jpg&ehk=tInXuQ3uuFXl%2byy%2fRJklPBaDgs7Cp9GI4W9N5IwrBok%3d&risl=&pid=ImgRaw&r=0");
 }
 
